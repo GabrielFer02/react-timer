@@ -1,5 +1,5 @@
 import { Play } from 'phosphor-react';
-import style from "./Home.module.css";
+import style from './Home.module.css';
 
 export function Home() {
   return (
@@ -23,8 +23,8 @@ export function Home() {
           <span>0</span>
         </div>
 
-        <button type='submit'>
-          <Play size={24}/>
+        <button type='submit' className={style['countdown-button']}>
+          <Play size={24} />
           Começar
         </button>
       </form>
