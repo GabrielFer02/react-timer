@@ -1,0 +1,85 @@
+.history-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 3.5rem;
+}
+
+.history-container h1 {
+  font-size: 1.5rem;
+  color: var(--gray-100);
+}
+
+.history-list {
+  flex: 1;
+  overflow: auto;
+  margin-top: 2rem;
+}
+
+.history-list table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.history-list table th {
+  background-color: var(--gray-600);
+  padding: 1rem;
+  text-align: left;
+  color: var(--gray-100);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.history-container table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.history-container table th:last-child {
+  border-top-right-radius: 8px;
+  padding-right: 1.5rem;
+}
+
+.history-container table td {
+  background-color: var(--gray-700);
+  border-top: 4px solid var(--gray-800);
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.history-container table td:first-child {
+  padding-left: 1.5rem;
+  width: 50%;
+
+}
+
+.history-container table td:last-child {
+  padding-right: 1.5rem;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;  
+}
+
+.status::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--yellow-500);
+}
+
+.status.green::before {
+  background: var(--green-500);
+}
+
+.status.red::before {
+  background: var(--red-500);
+}
+
+.status.yellow::before {
+  background: var(--yellow-500);
+}
