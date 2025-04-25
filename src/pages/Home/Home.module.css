@@ -103,3 +103,11 @@
 .countdown-button:not(:disabled):hover {
   background: var(--green-700);
 }
+
+.countdown-button.stop-button {
+  background: var(--red-500);
+}
+
+.countdown-button.stop-button:not(:disabled):hover {
+  background: var(--red-700);
+}
