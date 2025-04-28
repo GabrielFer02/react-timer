@@ -1,9 +1,7 @@
-import { useForm, useFormContext } from 'react-hook-form';
-import zod from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useFormContext } from 'react-hook-form';
 import style from './NewCycleForm.module.css';
 import React from 'react';
-import { CyclesContext } from '../../Home';
+import { CyclesContext } from '../../../../contexts/CyclesContext';
 
 export function NewCycleForm() {
   const { activeCycle } = React.useContext(CyclesContext);
