@@ -1,6 +1,8 @@
 import { CyclesContext } from '../../contexts/CyclesContext';
 import style from './History.module.css';
 import React from 'react';
+import { formatDistanceToNow } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 export function History() {
   const { cycles } = React.useContext(CyclesContext);
@@ -8,7 +10,6 @@ export function History() {
     <main className={style['history-container']}>
       <h1>Meu Histórico</h1>
 
-      <pre>{JSON.stringify(cycles, null, 2)}</pre>
       <div className={style['history-list']}>
         <table>
           <thead>
@@ -20,44 +21,35 @@ export function History() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <span className={`${style.status} ${style['green']}`}>
-                  Concluído
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <span className={`${style.status} ${style['yellow']}`}>
-                  Em andamento
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <span className={`${style.status} ${style['red']}`}>
-                  Interrompido
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>Tarefa</td>
-              <td>20 minutos</td>
-              <td>Há 2 meses</td>
-              <td>
-                <span className={style.status}>Status</span>
-              </td>
-            </tr>
+            {cycles.map(cycle => {
+              return (
+                <tr key={cycle.id}>
+                  <td>{cycle.task}</td>
+                  <td>{cycle.minutesAmount}</td>
+                  <td>
+                    {formatDistanceToNow(cycle.startDate, { addSuffix: true, locale: ptBR })}
+                  </td>
+                  <td>
+                    {cycle.finishedDate && (
+                      <span className={`${style.status} ${style['green']}`}>
+                        Concluído
+                      </span>
+                    )}
+
+                    {cycle.interruptedDate && (
+                      <span className={`${style.status} ${style['red']}`}>
+                        Interrompido
+                      </span>
+                    )}
+                    {!cycle.finishedDate && !cycle.interruptedDate && (
+                      <span className={`${style.status} ${style['yellow']}`}>
+                        Em Andamento
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
